@@ -13,3 +13,10 @@ module "subnets" {
   availability_zones   = data.aws_availability_zones.available.names
   public_subnet_cidrs  = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
 }
+
+module "networking" {
+  source            = "./modules/route-table"
+  vpc_id            = module.vpc.vpc_id
+  public_subnet_ids = module.subnets.public_subnet_ids
+  name_prefix       = "kafka"
+}
