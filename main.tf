@@ -20,3 +20,10 @@ module "networking" {
   public_subnet_ids = module.subnets.public_subnet_ids
   name_prefix       = "kafka"
 }
+
+module "security_group" {
+  source        = "./modules/sg"
+  vpc_id        = module.vpc.vpc_id
+  name_prefix   = "kafka"
+  allowed_cidrs = ["0.0.0.0/0"] # You can restrict this later
+}
