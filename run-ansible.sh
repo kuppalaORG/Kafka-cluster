@@ -16,12 +16,12 @@ echo "📂 Listing files in ~/.ssh:"
 ls -l ~/.ssh
 
 # Step 2: Build dynamic inventory
+# Step 2: Build dynamic inventory file
 INVENTORY_FILE="/tmp/kafka-inventory.ini"
 echo "[all]" > $INVENTORY_FILE
 
 for ip in $BROKER_IPS; do
-  echo "🔗 Adding broker: $ip"
-  echo "${ip} ansible_user=ec2-user ansible_ssh_private_key_file=~/.ssh/kafka-key.pem" >> $INVENTORY_FILE
+  echo "${ip} ansible_user=ec2-user ansible_ssh_private_key_file=/home/grunner/.ssh/kafka-key.pem" >> $INVENTORY_FILE
 done
 
 # Step 3: Run Ansible
