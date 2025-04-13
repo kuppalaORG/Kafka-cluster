@@ -10,6 +10,12 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Make Ansible script executable
+        run: chmod +x ./run-ansible.sh
+
+      - name: print ls
+        run: ls -al
+
       - name: Terraform Init
         run: terraform init -backend-config=environments/dev/state.tfvars
       - name: Terraform Apply
