@@ -13,3 +13,4 @@ output "broker_public_ips" {
 output "broker_private_ips" {
   value = module.ec2_brokers.private_ips
 }
+

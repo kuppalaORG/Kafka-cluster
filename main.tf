@@ -38,3 +38,11 @@ module "ec2_brokers" {
   key_name          = var.key_name
   name_prefix       = "kafka"
 }
+
+resource "null_resource" "run_ansible" {
+  provisioner "local-exec" {
+    command = "${path.module}/scripts/run-ansible.sh"
+  }
+
+  depends_on = [module.ec2_brokers]
+}
