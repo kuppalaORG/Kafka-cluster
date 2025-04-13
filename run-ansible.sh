@@ -20,5 +20,5 @@ for ip in $BROKER_IPS; do
 done
 
 # Step 3: Run Ansible
-cd /tmp/kafka-ansible-setup
+cd /tmp/kafka-ansible-setup || return 1
 ansible-playbook -i $INVENTORY_FILE install-kafka.yml
