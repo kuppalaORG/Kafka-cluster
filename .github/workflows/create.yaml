@@ -15,8 +15,7 @@ jobs:
 
       - name: print ls
         run: ls -al
-      - name: Show working directory
-        run: pwd && ls -l && ls -R terraform/
+
 
       - name: Terraform Init
         run: terraform init -backend-config=environments/dev/state.tfvars
@@ -25,3 +24,5 @@ jobs:
 
       - name: Print Terraform Outputs (for debug)
         run: terraform output -json
+      - name: Show working directory
+        run: pwd && ls -l && ls -R terraform/
