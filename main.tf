@@ -41,7 +41,7 @@ module "ec2_brokers" {
 
 resource "null_resource" "run_ansible" {
   provisioner "local-exec" {
-    command = "${path.module}/scripts/run-ansible.sh"
+    command = "${path.module}/run-ansible.sh"
   }
 
   depends_on = [module.ec2_brokers]
