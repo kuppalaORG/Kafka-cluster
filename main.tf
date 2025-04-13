@@ -27,3 +27,14 @@ module "security_group" {
   name_prefix   = "kafka"
   allowed_cidrs = ["0.0.0.0/0"] # You can restrict this later
 }
+
+module "ec2_brokers" {
+  source            = "./modules/ec2"
+  ami_id            = var.ami_id
+  instance_type     = "t2.micro"
+  instance_count    = 3
+  subnet_ids        = module.subnets.public_subnet_ids
+  security_group_id = module.security_group.security_group_id
+  key_name          = var.key_name
+  name_prefix       = "kafka"
+}
