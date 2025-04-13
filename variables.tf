@@ -7,3 +7,6 @@ variable "key_name" {
   description = "SSH Key pair"
   type        = string
 }
+
+variable "bucket" {}
+variable "key" {}

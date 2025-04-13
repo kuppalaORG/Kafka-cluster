@@ -39,19 +39,12 @@ module "ec2_brokers" {
   name_prefix       = "kafka"
 }
 
-resource "null_resource" "make_script_executable" {
-  provisioner "local-exec" {
-    command = "chmod +x ${path.module}/run-ansible.sh"
-  }
-}
-
 resource "null_resource" "run_ansible" {
   provisioner "local-exec" {
     command = "${path.module}/run-ansible.sh"
   }
 
   depends_on = [
-    null_resource.make_script_executable,
     module.ec2_brokers
   ]
 }
