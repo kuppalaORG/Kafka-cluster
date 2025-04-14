@@ -39,6 +39,15 @@ module "ec2_brokers" {
   name_prefix       = "kafka"
 }
 
+resource "null_resource" "print_ips" {
+  provisioner "local-exec" {
+    command = "echo 'EC2 Public IPs: ${join(", ", module.ec2_brokers.public_ips)}'"
+  }
+
+  depends_on = [module.ec2_brokers]
+}
+
+
 resource "null_resource" "run_ansible" {
   provisioner "local-exec" {
     command = "${path.module}/run-ansible.sh"
