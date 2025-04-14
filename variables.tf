@@ -8,5 +8,11 @@ variable "key_name" {
   type        = string
 }
 
-variable "bucket" {}
-variable "key" {}
+variable "bucket" {
+  default = "firstawsbucketterra"
+}
+
+variable "key" {
+  default = "kafka-tf-state/kafka-dev/terraform.tfstate"
+}
+{}
