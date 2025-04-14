@@ -13,10 +13,10 @@ else
   cd /tmp/kafka-ansible-setup && git pull
 fi
 
-echo "broker_public_ips_print ${broker_public_ips}"
+
 # Step 1: Get IPs from terraform output
 BROKER_IPS=$(terraform output -json broker_public_ips | jq -r '.[]')
-
+echo "📦 Broker IPs: $BROKER_IPS"
 # Debug: Print available SSH keys
 echo "📂 Listing files in ~/.ssh:"
 ls -l ~/.ssh
@@ -31,5 +31,5 @@ for ip in $BROKER_IPS; do
 done
 
 # Step 3: Run Ansible
-cd /tmp/kafka-ansible-setup || return 1
+cd /tmp/kafka-ansible-setup || exit 1
 ansible-playbook -i $INVENTORY_FILE install-kafka.yml
