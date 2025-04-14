@@ -26,7 +26,7 @@ jobs:
         run: terraform output -json
 
       - name: Show working directory
-        run: pwd && ls -l && ls -R terraform/
+        run: pwd && ls -al
 
       - name: Run Ansible Playbook
         run: ./run-ansible.sh
