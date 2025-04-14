@@ -48,12 +48,12 @@ resource "null_resource" "print_ips" {
 }
 
 
-resource "null_resource" "run_ansible" {
-  provisioner "local-exec" {
-    command = "${path.module}/run-ansible.sh"
-  }
-
-  depends_on = [
-    module.ec2_brokers
-  ]
-}
+# resource "null_resource" "run_ansible" {
+#   provisioner "local-exec" {
+#     command = "${path.module}/run-ansible.sh"
+#   }
+#
+#   depends_on = [
+#     module.ec2_brokers
+#   ]
+# }

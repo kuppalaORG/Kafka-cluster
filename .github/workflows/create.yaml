@@ -24,5 +24,10 @@ jobs:
 
       - name: Print Terraform Outputs (for debug)
         run: terraform output -json
+
       - name: Show working directory
         run: pwd && ls -l && ls -R terraform/
+
+      - name: Run Ansible Playbook
+        run: ./run-ansible.sh
+

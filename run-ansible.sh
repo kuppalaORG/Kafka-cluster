@@ -1,5 +1,10 @@
 #!/bin/bash
 
+echo "🔍 Checking Terraform outputs..."
+terraform output -json broker_public_ips
+echo "⚠️ Exit Code: $?"
+
+
 # Step 0: Clone or pull latest Ansible repo
 if [ ! -d "/tmp/kafka-ansible-setup" ]; then
   git clone https://github.com/kuppalaORG/kafka-installation-ansible.git /tmp/kafka-ansible-setup
@@ -8,7 +13,7 @@ else
   cd /tmp/kafka-ansible-setup && git pull
 fi
 
-echo "broker_public_ips ${broker_public_ips}"
+echo "broker_public_ips_print ${broker_public_ips}"
 # Step 1: Get IPs from terraform output
 BROKER_IPS=$(terraform output -json broker_public_ips | jq -r '.[]')
 
