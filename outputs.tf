@@ -20,3 +20,4 @@ output "broker_dns_names" {
     "kafka-broker-${i + 1}.${var.domain_name}"
   ]
 }
+
