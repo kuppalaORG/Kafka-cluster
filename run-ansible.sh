@@ -8,6 +8,7 @@ else
   cd /tmp/kafka-ansible-setup && git pull
 fi
 
+echo "broker_public_ips ${broker_public_ips}"
 # Step 1: Get IPs from terraform output
 BROKER_IPS=$(terraform output -json broker_public_ips | jq -r '.[]')
 
