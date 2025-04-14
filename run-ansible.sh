@@ -13,4 +13,4 @@ ls -l ~/.ssh
 
 echo "🚀 Running Ansible playbook..."
 cd /tmp/kafka-ansible-setup || exit 1
-ansible-playbook -i inventory/kafka-brokers.ini install-kafka.yml
+ansible-playbook -i inventory/kafka-brokers.ini install-kafka.yaml
