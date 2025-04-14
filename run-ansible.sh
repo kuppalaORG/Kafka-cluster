@@ -33,4 +33,4 @@ ansible all -i $INVENTORY_FILE -m ping
 # Step 4: Run playbook
 echo "🚀 Running install-kafka.yml playbook..."
 cd $ANSIBLE_DIR || exit 1
-ansible-playbook -i $INVENTORY_FILE install-kafka.yml
+ansible-playbook -i $INVENTORY_FILE install-kafka.yaml
