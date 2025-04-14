@@ -28,6 +28,9 @@ jobs:
       - name: Show working directory
         run: pwd && ls -al
 
+      - name: Set working directory
+        run: cd /actions-runner/_work/Kafka-cluster/Kafka-cluster
+
       - name: Run Ansible Playbook
         run: ./run-ansible.sh
 
