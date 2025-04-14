@@ -12,3 +12,13 @@ resource "aws_instance" "kafka" {
     Name = "${var.name_prefix}-broker-${count.index + 1}"
   }
 }
+resource "aws_route53_record" "kafka_broker" {
+  count   = var.route53_zone_id != null && var.domain_name != null ? var.instance_count : 0
+  zone_id = var.route53_zone_id
+  name    = "kafka-broker-${count.index + 1}.${var.domain_name}"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.kafka[count.index].public_ip]
+
+  depends_on = [aws_instance.kafka]
+}

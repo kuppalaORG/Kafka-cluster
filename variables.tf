@@ -15,3 +15,14 @@ variable "bucket" {
 variable "key" {
   default = "kafka-tf-state/kafka-dev/terraform.tfstate"
 }
+
+# root/variables.tf
+variable "route53_zone_id" {
+  description = "The ID of the hosted zone"
+  type        = string
+}
+
+variable "domain_name" {
+  description = "The base domain name"
+  type        = string
+}

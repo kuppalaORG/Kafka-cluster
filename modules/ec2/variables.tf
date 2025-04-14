@@ -26,3 +26,14 @@ variable "key_name" {
 variable "name_prefix" {
   type = string
 }
+variable "route53_zone_id" {
+  description = "Route53 Hosted Zone ID"
+  type        = string
+  default     = null
+}
+
+variable "domain_name" {
+  description = "Domain name for broker DNS records"
+  type        = string
+  default     = null
+}
