@@ -10,8 +10,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Make Ansible script executable
-        run: chmod +x ./run-ansible.sh
+      - name: Ensure script is executable
+        run: chmod +x ./run-ansible.sh || true
+
 
       - name: print ls
         run: ls -al

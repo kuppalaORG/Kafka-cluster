@@ -14,3 +14,9 @@ output "broker_private_ips" {
   value = module.ec2_brokers.private_ips
 }
 
+output "broker_dns_names" {
+  value = [
+    for i in range(var.instance_count) :
+    "kafka-broker-${i + 1}.${var.domain_name}"
+  ]
+}
