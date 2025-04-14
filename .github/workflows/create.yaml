@@ -20,7 +20,7 @@ jobs:
       - name: Terraform Init
         run: terraform init -backend-config=environments/dev/state.tfvars
       - name: Terraform Apply
-        run: terraform apply -var-file=environments/dev/state.tfvars -auto-approve
+        run: terraform apply -auto-approve -var-file=environments/dev/main.tfvars
 
       - name: Print Terraform Outputs (for debug)
         run: terraform output -json
