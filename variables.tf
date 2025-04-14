@@ -15,4 +15,3 @@ variable "bucket" {
 variable "key" {
   default = "kafka-tf-state/kafka-dev/terraform.tfstate"
 }
-{}
