@@ -27,7 +27,7 @@ echo "[all]" > "$INVENTORY_FILE"
 
 i=1
 paste <(echo "$BROKER_DNS") <(echo "$PRIVATE_IPS") | while read -r dns ip; do
-  echo "$dns ansible_user=ec2-user ansible_ssh_private_key_file=/home/grunner/.ssh/kafka-key.pem broker_id=$i private_ip=$ip" >> "$INVENTORY_FILE"
+  echo "$dns ansible_host=$dns ansible_user=ec2-user ansible_ssh_private_key_file=/home/grunner/.ssh/kafka-key.pem broker_id=$i private_ip=$ip" >> "$INVENTORY_FILE"
   i=$((i + 1))
 done
 
