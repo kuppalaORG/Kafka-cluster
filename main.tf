@@ -31,7 +31,7 @@ module "security_group" {
 module "ec2_brokers" {
   source            = "./modules/ec2"
   ami_id            = var.ami_id
-  instance_type     = "t2.micro"
+  instance_type     = "t3.large"
   instance_count    = 3
   subnet_ids        = module.subnets.public_subnet_ids
   security_group_id = module.security_group.security_group_id

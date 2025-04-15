@@ -37,3 +37,8 @@ variable "domain_name" {
   type        = string
   default     = null
 }
+variable "root_volume_size" {
+  description = "Size of the root EBS volume in GB"
+  type        = number
+  default     = 20
+}
