@@ -49,6 +49,13 @@ resource "null_resource" "print_ips" {
   depends_on = [module.ec2_brokers]
 }
 
+resource "aws_route53_record" "dashboard_dns" {
+  zone_id = var.route53_zone_id
+  name    = "dashboard.${var.domain_name}"
+  type    = "A"
+  ttl     = 300
+  records = [element(module.ec2_brokers.public_ips, 0)]
+}
 
 # resource "null_resource" "run_ansible" {
 #   provisioner "local-exec" {

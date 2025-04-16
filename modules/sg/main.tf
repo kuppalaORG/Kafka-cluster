@@ -11,6 +11,13 @@ resource "aws_security_group" "kafka_sg" {
     protocol    = "tcp"
     cidr_blocks = var.allowed_cidrs
   }
+  ingress {
+    description = "Allow Streamlit Dashboard"
+    from_port   = 8501
+    to_port     = 8501
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
   # Kafka client access
   ingress {
